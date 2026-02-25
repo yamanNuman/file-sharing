@@ -58,6 +58,7 @@ npm run start:dev
 ```
 ---
 
+```bash
 .env file
 
 PORT=5000
@@ -70,6 +71,8 @@ MAIL_PORT=587
 MAIL_USER=your@mail.com
 MAIL_PASS=yourpassword
 API_ORIGIN=http://localhost:5173
+```
+----
 
 ### 3) Frontend
 
@@ -96,7 +99,8 @@ POST /mail/send
 | -------- | ------ | ---------------- |
 | fileId   | string | Mongodb _id      |
 
-
+----
+```bash
 {
   "filename": "document.pdf",
   "secure_url": "https://res.cloudinary.com/...",
@@ -106,3 +110,4 @@ POST /mail/send
   "receiver": "bob@mail.com",
   "createdAt": "2026-02-25T
 }
+```
