@@ -1,13 +1,26 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import cors from 'cors';
-import { PORT } from "./config/constants";
+import { APP_ORIGIN, PORT } from "./config/constants";
 import connectDB from "./config/db";
+import fileRoute from "./routes/file.route";
+import mailRoute from "./routes/mail.route";
+import errorHandler from "./middleware/error.middleware";
 
 const app = express();
 
 //Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: APP_ORIGIN,
+    methods: ["GET","POST"],
+    credentials: true
+}));
+app.use(urlencoded({
+    extended:true
+}));
+app.use("/files", fileRoute);
+app.use("/mail", mailRoute);
+app.use(errorHandler);
 
 const startServer = async () => {
     try {
